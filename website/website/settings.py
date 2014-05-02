@@ -50,10 +50,27 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
+AUTH_PROFILE_MODULE = 'member.UserProfile'
+
 ROOT_URLCONF = 'website.urls'
 
 WSGI_APPLICATION = 'website.wsgi.application'
 
+'''
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend'
+)
+'''
+
+PASSWORD_HASHERS = (
+    'django.contrib.auth.hashers.PBKDF2PasswordHasher',
+    'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
+    'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
+    'django.contrib.auth.hashers.BCryptPasswordHasher',
+    'django.contrib.auth.hashers.SHA1PasswordHasher',
+    'django.contrib.auth.hashers.MD5PasswordHasher',
+    'django.contrib.auth.hashers.CryptPasswordHasher',
+)
 
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases

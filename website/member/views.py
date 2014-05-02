@@ -1,24 +1,22 @@
-import hashlib
-
-from django.shortcuts import render
+from django.contrib.auth import authenticate
+from django.contrib.auth import login
+from django.contrib.auth import logout
+from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
+from django.shortcuts import render
 from django.views.decorators.http import require_GET
 from django.views.decorators.http import require_POST
 
-from models import Member, User, Photo
+from models import UserProfile
+
 from forms import LoginForm
 from forms import RegisterForm
 
 # Create your views here.
 
-def encrypt(plain):
-    plain = str(plain)
-    return hashlib.sha512(plain).hexdigest()
-
-
 def new_user(userdata):
     username = userdata['username']
-    password = encrypt(userdata['password'])
+    password = userdata['password']
     email = userdata['email']
     name = userdata['name']
     birthday = userdata['birthday']
@@ -26,20 +24,19 @@ def new_user(userdata):
     phone = userdata['phone']
     # photo = Photo.objects.get(id=1)
 
-    member = Member(username=username, password=password, email=email)
-    member.save()
+    user = User(username=username, email=email)
+    user.set_password(password)
+    user.save()
 
-    User.objects.create(member=member, name=name, 
-                    birthday=birthday, intro=intro, phone=phone)
+    profile = UserProfile(user=user, name=name, birthday=birthday, 
+                    intro=intro, phone=phone)
+    profile.save()
 
-def login_user(username, password):
-    username = str(username)
-    password = encrypt(password)
-    members = Member.objects.filter(username=username, password=password)
-
-    if not members:
-        return None
-    return members[0]
+def login_user(request, username, password):
+    user = authenticate(username=username, password=password)
+    if user:
+        login(request, user)
+    return user
 
 
 def get_signup(request):
@@ -57,10 +54,9 @@ def get_signin(request):
 
 def post_signup(request):
     form = RegisterForm(request.POST)
- 
     if form.is_valid():
         userdata = {
-            'username': form.cleaned_data['user'],
+            'username': form.cleaned_data['username'],
             'password': form.cleaned_data['passwd'],
             'email': form.cleaned_data['email'],
             'name': form.cleaned_data['name'],
@@ -69,28 +65,28 @@ def post_signup(request):
             'phone': form.cleaned_data['phone']
         }
         print 'su', userdata['username']
-        if login_user(userdata['username'], userdata['password']):
+        if form.is_registered():
+            print 'already exist'
             return HttpResponseRedirect('/')
         print 'sign up success'
         new_user(userdata)
         return HttpResponseRedirect('signin')
     else:
         print 'form invalid'
+    
     return HttpResponseRedirect('/')
-
-
 
 def post_signin(request):
     form = LoginForm(request.POST)
     if form.is_valid():
-
         username = form.cleaned_data['user']
         password = form.cleaned_data['passwd']
-   
+
         redirect_url = 'http://google.com'
-        user = login_user(username, password)
+
+        user = login_user(request, username, password)
         if user:
-            request.session['user'] = username
+            profiles = request.user.get_profile()
             redirect_url = '/'
         else: # id not found
             pass
@@ -110,5 +106,5 @@ def sign_in(request):
         return post_signin(request)
 
 def sign_out(request):
-    del request.session
+    logout(request)
     return HttpResponseRedirect('/')
