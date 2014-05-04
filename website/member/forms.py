@@ -13,8 +13,8 @@ class RegisterForm(forms.Form):
 
     name = forms.CharField(max_length=32)
     birthday = forms.DateField(initial=datetime.date.today)
-    intro = forms.CharField(widget=forms.Textarea)
-    phone = forms.CharField(max_length=11)
+    intro = forms.CharField(widget=forms.Textarea, required=False)
+    phone = forms.CharField(max_length=11, required=False)
 
     def is_registered(self):
     	try:

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+list 
+{% for article in articles %}
+
+<div class="row">
+<div class="col-md-2">
+<center>{{ article.id }}</center>
+</div>
+<div class="col-md-6">
+<a href="{% url 'view_article' article.id %}"> {{ article.subject }} </a>
+</div>
+<div class="col-md-2">
+{{ article.author.get_profile.name }}
+</div>
+<div class="col-md-2">
+{{ article.written }}
+</div>
+</div>
+
+{% endfor %}
+
+<a href="{% url 'write_article' current_board %}" class="btn btn-primary btn" onclick="submit()">글쓰기</a>
+{% endblock %}

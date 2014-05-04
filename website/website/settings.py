@@ -40,7 +40,8 @@ INSTALLED_APPS = (
     'bootstrap3',
     
     'intro',
-    'member'
+    'member',
+    'board',
 )
 
 MIDDLEWARE_CLASSES = (

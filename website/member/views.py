@@ -64,15 +64,11 @@ def post_signup(request):
             'intro': form.cleaned_data['intro'],
             'phone': form.cleaned_data['phone']
         }
-        print 'su', userdata['username']
         if form.is_registered():
-            print 'already exist'
             return HttpResponseRedirect('/')
-        print 'sign up success'
+
         new_user(userdata)
         return HttpResponseRedirect('signin')
-    else:
-        print 'form invalid'
     
     return HttpResponseRedirect('/')
 

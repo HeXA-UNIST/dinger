@@ -21,7 +21,7 @@ li {
 }
 
 #intro {
-    background-color: rgb(33, 38, 33);
+    background-color: #216BB5; //rgb(33, 38, 33);
     color: #fff;
     padding: 60px 0;
     text-align: center;
