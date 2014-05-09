@@ -32,12 +32,18 @@ def list_articles(request, board_name):
 	
 def view_article(request, article_id):
 	article = get_object_or_404(Article, pk=article_id)
-
+	article.hit += 1
+	article.save()
+	
+	board = article.board;
 	#if article.read > request.user.authorization:
 	# Authorization need
 	#	pass
 
-	return render(request, 'view_article.html', {
+
+	return render(request, 'list_articles.html', {
+			'current_board': board.name,
+			'articles': reversed(board.article_set.all()),
 			'article': article,
 			'comments': article.comment_set.all(),
 			'form': CommentForm(),

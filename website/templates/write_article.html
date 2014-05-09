@@ -1,5 +1,9 @@
 {% extends "base.html" %}
 
+{% block head %}
+<link rel="stylesheet" href="/static/css/board.css">
+{% endblock %}
+
 {% block content %}
 
 <form action="{% url 'write_article' current_board %}" method="post">
