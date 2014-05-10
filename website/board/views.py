@@ -86,5 +86,5 @@ def write_comment(request, article_id):
 										args=[str(article.id)]))
 	return HttpResponseRedirect('/')
 
-
-
+def show_board(request, board_name):
+    return render(request, 'index.html', {'board_name': board_name})

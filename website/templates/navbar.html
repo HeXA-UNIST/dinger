@@ -20,54 +20,54 @@
       <li class="dropdown">
         <a href class="dropdown-toggle" data-toggle="dropdown">Introduce <b class="caret"></b></a>
         <ul class="dropdown-menu">
-          <li><a href="/#">HeXA</a></li>
-          <li><a href="/#">History</a></li>
-          <li><a href="/#">Member</a></li>
-          <li><a href="/#">Calender</a></li>
-          <li><a href="/#">CTF</a></li>
-          <li><a href="/#">Gallery</a></li>
+          <li><a href="/board/HeXA">HeXA</a></li>
+          <li><a href="/board/History">History</a></li>
+          <li><a href="/board/Member">Member</a></li>
+          <li><a href="/board/Calender">Calender</a></li>
+          <li><a href="/board/CTF">CTF</a></li>
+          <li><a href="/board/Gallery">Gallery</a></li>
         </ul>
       </li>
       <li class="dropdown">
         <a href class="dropdown-toggle" data-toggle="dropdown">Community <b class="caret"></b></a>
         <ul class="dropdown-menu">
-          <li><a href="/#">Notice</a></li>
-          <li><a href="/#">Update</a></li>
-          <li><a href="/#">FreeBoard</a></li>
-          <li><a href="/#">Gallery</a></li>
+          <li><a href="/board/Notice">Notice</a></li>
+          <li><a href="/board/Update">Update</a></li>
+          <li><a href="/board/FreeBoard">FreeBoard</a></li>
+          <li><a href="/board/Gallery2">Gallery</a></li>
         </ul>
       </li>
       <li class="dropdown">
         <a href class="dropdown-toggle" data-toggle="dropdown">Study <b class="caret"></b></a>
         <ul class="dropdown-menu">
-          <li><a href="/#">System</a></li>
-          <li><a href="/#">Network</a></li>
-          <li><a href="/#">Web</a></li>
-          <li><a href="/#">Other</a></li>
+          <li><a href="/board/System1">System</a></li>
+          <li><a href="/board/Network1">Network</a></li>
+          <li><a href="/board/Web1">Web</a></li>
+          <li><a href="/board/Other">Other</a></li>
         </ul>
       </li>
       <li class="dropdown">
         <a href class="dropdown-toggle" data-toggle="dropdown">Database <b class="caret"></b></a>
         <ul class="dropdown-menu">
-          <li><a href="/#">System</a></li>
-          <li><a href="/#">Network</a></li>
-          <li><a href="/#">Web</a></li>
-          <li><a href="/#">Coding</a></li>
-          <li><a href="/#">Information</a></li>
+          <li><a href="/board/System2">System</a></li>
+          <li><a href="/board/Network2">Network</a></li>
+          <li><a href="/board/Web2">Web</a></li>
+          <li><a href="/board/Coding">Coding</a></li>
+          <li><a href="/board/Information">Information</a></li>
         </ul>
       </li>
       <li class="dropdown">
         <a href class="dropdown-toggle" data-toggle="dropdown">Wargame <b class="caret"></b></a>
         <ul class="dropdown-menu">
-          <li><a href="/#">Rank</a></li>
-          <li><a href="/#">Game</a></li>
+          <li><a href="/board/Rank">Rank</a></li>
+          <li><a href="/board/Game">Game</a></li>
         </ul>
       </li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       {% if user.is_authenticated %}
       <li class="dropdown pull-right">
-        <a href class="dropdown-toggle" data-toggle="dropdown">JM <b class="caret"></b></a>
+        <a href class="dropdown-toggle" data-toggle="dropdown">{{user.get_profile.name}} <b class="caret"></b></a>
         <ul class="dropdown-menu">
           <li><a href="{% url 'signout' %}"><b>Sign out</b></a></li>
         </ul>
