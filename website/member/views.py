@@ -86,8 +86,10 @@ def post_signin(request):
             redirect_url = '/'
         else: # id not found
             pass
-        return HttpResponseRedirect(redirect_url)
-    return HttpRequestRedirect('/')
+        #return HttpResponseRedirect(redirect_url)
+        return HttpResponseRedirect('/')
+        return render(request, 'intro', {'profiles': profiles})
+    return HttpResponseRedirect('/')
 
 def sign_up(request):
     if request.method == 'GET':

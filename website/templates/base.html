@@ -3,93 +3,35 @@
 
 <html>
 <head>
-<meta charset="utf-8">
-<title></title>
-<link rel="stylesheet" href="/static/css/bootstrap.css">
-<link rel="stylesheet" href="/static/css/normalize.css">
-<link rel="stylesheet" href="/static/css/base.css">
-{% block head %} {% endblock %}
+  <meta charset="utf-8">
+  <title>{% block title %}{% endblock %}</title>
+  <link rel="stylesheet" href="/static/css/bootstrap.css">
+  <link rel="stylesheet" href="/static/css/normalize.css">
+  <link rel="stylesheet" href="/static/css/base.css">
+  {% block head %}{% endblock %}
 </head>
+
 <body>
-  <div id="site_wrapper" class="container">
-    <header class="header">
-      <nav class="navbar navbar-default" role="navigation">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <a class="navbar-brand" href="{% url 'index' %}">HeXA</a>
+  <div id="container">
+    <div id="header">
+      {% block navbar %}
+        {% include "navbar.html" %}
+      {% endblock %}
     </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li><a href="{% url 'list_articles' 'notice' %}">Notice</a></li>
-        <li><a href="#">CTF 일정</a></li>
-        <li><a href="{% url 'list_articles' 'study' %}">Study</a></li>
-        <li><a href="{% url 'list_articles' 'database' %}">Database</a></li>
-        <li><a href="#">Gallery</a></li>
-        <li><a href="#">War Game</a></li>
-      </ul>
-    
-      {% if user.is_authenticated %}
-      <a class="navbar-text navbar-link navbar-right" href="{% url 'signout' %}">sign out</a>
-      <p class="navbar-text navbar-right">
-         Hello, <strong>{{ user.get_profile.name }}</strong>
-      </p>
-      
-      {% else %}
-       <a class="navbar-text navbar-link navbar-right" href="{% url 'signin' %}">sign in</a>
-      {% endif %}
-
-      <form class="navbar-form navbar-right" role="search">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-      </form>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
-    </header>
-    <div id="sidebar">
+    <div id="content">
+      {% block content %}
+      {% endblock %}
     </div>
-    <div class="middle">
-      
-      <div class="content_wrapper">  
-        <main class="content">
-          {% block content %}
-
-          {% endblock %}
-        </main>
-      </div>
-      <aside class="left-sidebar">
-        <div align=center>
-          <br/>
-          <a href="http://hexa.iptime.org:8000/" target="_blank"><img src="/static/movieduk.png" width=180 border=0 /></a>
-          <br/>
-          <a href="http://unif.wo.tc/wiki" target="_blank"><img src="/static/hexawiki.png" width=180 border=0 /></a>
-          <br/>
-          <a href="http://www.facebook.com/unist.hexa" target="_blank"><img src="/static/facebook-hexa.png" width=180 border=0 /></a>
-          <br/>
-          <a href="http://club.cyworld.com/ClubV1/Home.cy/53814181" target="_blank"><img src="/static/nate.png" width=180 border=0 /></a>
-          <br/>
-          <a href="http://www.facebook.com/hexa.portal" target="_blank"><img src="/static/portalbot2.png" width=180 border=0 /></a>
-          <br/>
-          <a href="http://www.unist.ac.kr"><img src="/static/unist.png" border=0 /></a>
-          <br/>
-          <br/>
-        </div>
-
-      </aside><!-- .left-sidebar -->
+    <div id="sideinfo">
+      {% block sideinfo %}
+        <h1>오른쪽사이드바</h1>
+      {% endblock %}
     </div>
-    <footer class="footer">
-      <center>Terms Privacy Developers © 2014 HeXA </center>
-    </footer>
-
-</div>
-
-
-
-
+    <div id="footer-fixed">
+      {% block footer %}
+        <center>Terms Privacy Developers © 2014 HeXA </center>
+      {% endblock %}
+    </div>
+  </div>
 </body>
 </html>

@@ -22,6 +22,3 @@ class RegisterForm(forms.Form):
         except User.DoesNotExist:
         	return False
        	return True
-            
-
-

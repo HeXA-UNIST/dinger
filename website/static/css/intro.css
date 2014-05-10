@@ -11,13 +11,13 @@ li {
     list-style: none;
 }
 
-
 .container {
     width: 970px;
     margin: 0 auto;
 }
 #header {
-
+  
+    background-color: #216BB5; //rgb(33, 38, 33);
 }
 
 #intro {
