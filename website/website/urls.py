@@ -7,9 +7,6 @@ from intro.views import main
 from board import views as board_views
 
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'dinger.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
     url(r'^$', main, name="index"),
     url(r'^intro/', include('intro.urls')),
     url(r'^member/', include('member.urls')),

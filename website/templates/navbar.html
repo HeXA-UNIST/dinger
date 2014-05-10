@@ -1,40 +1,78 @@
-<div class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="{% url 'intro.views.main' %}">HeXA</a>
-    </div>
-    <div class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-        <li><a href="/#">Menu1</a></li>
-        <li><a href="/#">Menu2</a></li>
-        <li><a href="/#">Menu3</a></li>
-        {% for i in "123" %}
-        <li class="dropdown">
-          <a href class="dropdown-toggle" data-toggle="dropdown">List{{i}} <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li class="dropdown-header">header1</li>
-            <li><a href="/#">Action1</a></li>
-            <li><a href="/#">Action2</a></li>
-            <li><a href="/#">Action3</a></li>
-            <li class="divider"></li>
-            <li class="dropdown-header">header2</li>
-            <li><a href="/#">Action4</a></li>
-            <li><a href="/#">Action5</a></li>
-          </ul>
-        </li>
-        {% endfor %}
-      </ul>
-      {% if user.is_authenticated %}
-      <form class="navbar-form navbar-right" method=POST action="{% url 'signout' %}">
-        {% csrf_token %}
-        <button type="submit" class="btn btn-success">Sign out</button>
-      </form>
-      {% endif %}
-    </div>
+<nav class="navbar navbar-inverse navbar-fixed-top scoped-content">
+  <style type="text/css" scoped>
+  .navbar-inverse {
+    background-color: #343434;
+    border-color: #232323;
+  }
+  .container { width: 100% }
+  .pull-right { margin-right: 20px }
+  </style>
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
   </div>
-</div>
+  <a class="navbar-brand" href="{% url 'intro.views.main' %}"><img src="https://fbcdn-sphotos-g-a.akamaihd.net/hphotos-ak-prn1/t1.0-9/10262087_257735844432069_7674560844438266838_n.jpg" width="25px" height="25px"></img> HeXA</a>
+  <div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav navbar-left">
+      <li class="dropdown">
+        <a href class="dropdown-toggle" data-toggle="dropdown">Introduce <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><a href="/#">HeXA</a></li>
+          <li><a href="/#">History</a></li>
+          <li><a href="/#">Member</a></li>
+          <li><a href="/#">Calender</a></li>
+          <li><a href="/#">CTF</a></li>
+          <li><a href="/#">Gallery</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href class="dropdown-toggle" data-toggle="dropdown">Community <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><a href="/#">Notice</a></li>
+          <li><a href="/#">Update</a></li>
+          <li><a href="/#">FreeBoard</a></li>
+          <li><a href="/#">Gallery</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href class="dropdown-toggle" data-toggle="dropdown">Study <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><a href="/#">System</a></li>
+          <li><a href="/#">Network</a></li>
+          <li><a href="/#">Web</a></li>
+          <li><a href="/#">Other</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href class="dropdown-toggle" data-toggle="dropdown">Database <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><a href="/#">System</a></li>
+          <li><a href="/#">Network</a></li>
+          <li><a href="/#">Web</a></li>
+          <li><a href="/#">Coding</a></li>
+          <li><a href="/#">Information</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href class="dropdown-toggle" data-toggle="dropdown">Wargame <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><a href="/#">Rank</a></li>
+          <li><a href="/#">Game</a></li>
+        </ul>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      {% if user.is_authenticated %}
+      <li class="dropdown pull-right">
+        <a href class="dropdown-toggle" data-toggle="dropdown">JM <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><a href="{% url 'signout' %}"><b>Sign out</b></a></li>
+        </ul>
+      </li>
+      {% endif %}
+    </ul>
+  </div>
+</nav>

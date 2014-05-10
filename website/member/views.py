@@ -96,8 +96,8 @@ def sign_up(request):
         return post_signup(request)
 
 def sign_in(request):
-    if request.user.is_authenticated:
-        return HttpResponseRedirect('/')
+    if request.user.is_authenticated():
+        return HttpResponseRedirect('main')
     elif request.method == 'GET':
         return get_signin(request)
     elif request.method == 'POST':
