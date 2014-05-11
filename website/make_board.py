@@ -5,11 +5,11 @@ from board.models import Board
 
 ## MAKE BOARDS ##
 board_list = [
-    'HeXA','History','Member','Calender','CTF','Gallery',
-    'Notice','Update','FreeBoard','Gallery2',
-    'System1','Network1','Web1','Other',
-    'System2','Network2','Web2','Coding','Information',
-    'Rank','Game'
+    'hexa','history','member','calender','ctf',
+    'notice','update','freeboard','gallery',
+    'system','network','web','other',
+    'dbsystem','dbnetwork','dbweb','coding','information',
+    'rank','game'
 ]
 
 for name in board_list:
