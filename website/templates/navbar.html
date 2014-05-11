@@ -8,59 +8,58 @@
   .pull-right { margin-right: 20px }
   </style>
   <div class="navbar-header">
-    <a class="navbar-brand" href="{% url 'intro.views.main' %}"><img src="/static/logo_dark.png" width="25px" height="25px"></img> HeXA</a>
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
   </div>
+  <a class="navbar-brand" href="{% url 'intro.views.main' %}"><img src="https://fbcdn-sphotos-g-a.akamaihd.net/hphotos-ak-prn1/t1.0-9/10262087_257735844432069_7674560844438266838_n.jpg" width="25px" height="25px"></img> HeXA</a>
   <div class="navbar-collapse collapse">
     <ul class="nav navbar-nav navbar-left">
       <li class="dropdown">
         <a href class="dropdown-toggle" data-toggle="dropdown">Introduce <b class="caret"></b></a>
         <ul class="dropdown-menu">
-          <li><a href="/board/HeXA">HeXA</a></li>
-          <li><a href="/board/History">History</a></li>
-          <li><a href="/board/Member">Member</a></li>
-          <li><a href="/board/Calender">Calender</a></li>
-          <li><a href="/board/CTF">CTF</a></li>
-          <li><a href="/board/Gallery">Gallery</a></li>
+          <li><a href="{% url 'board' 'hexa' %}">HeXA</a></li>
+          <li><a href="{% url 'board' 'history' %}">History</a></li>
+          <li><a href="{% url 'board' 'member' %}">Member</a></li>
+          <li><a href="{% url 'board' 'calender' %}">Calender</a></li>
+          <li><a href="{% url 'board' 'ctf' %}">CTF</a></li>
         </ul>
       </li>
       <li class="dropdown">
         <a href class="dropdown-toggle" data-toggle="dropdown">Community <b class="caret"></b></a>
         <ul class="dropdown-menu">
-          <li><a href="/board/Notice">Notice</a></li>
-          <li><a href="/board/Update">Update</a></li>
-          <li><a href="/board/FreeBoard">FreeBoard</a></li>
-          <li><a href="/board/Gallery2">Gallery</a></li>
+          <li><a href="{% url 'board' 'notice' %}">Notice</a></li>
+          <li><a href="{% url 'board' 'update' %}">Update</a></li>
+          <li><a href="{% url 'board' 'freeboard' %}">FreeBoard</a></li>
+          <li><a href="/{% url 'board' 'gallery' %}">Gallery</a></li>
         </ul>
       </li>
       <li class="dropdown">
         <a href class="dropdown-toggle" data-toggle="dropdown">Study <b class="caret"></b></a>
         <ul class="dropdown-menu">
-          <li><a href="/board/System1">System</a></li>
-          <li><a href="/board/Network1">Network</a></li>
-          <li><a href="/board/Web1">Web</a></li>
-          <li><a href="/board/Other">Other</a></li>
+          <li><a href="{% url 'board' 'system' %}">System</a></li>
+          <li><a href="{% url 'board' 'network' %}">Network</a></li>
+          <li><a href="{% url 'board' 'web' %}">Web</a></li>
+          <li><a href="{% url 'board' 'other' %}">Other</a></li>
         </ul>
       </li>
       <li class="dropdown">
         <a href class="dropdown-toggle" data-toggle="dropdown">Database <b class="caret"></b></a>
         <ul class="dropdown-menu">
-          <li><a href="/board/System2">System</a></li>
-          <li><a href="/board/Network2">Network</a></li>
-          <li><a href="/board/Web2">Web</a></li>
-          <li><a href="/board/Coding">Coding</a></li>
-          <li><a href="/board/Information">Information</a></li>
+          <li><a href="{% url 'board' 'dbsys' %}">System</a></li>
+          <li><a href="{% url 'board' 'dbnetwork' %}">Network</a></li>
+          <li><a href="{% url 'board' 'dbweb' %}">Web</a></li>
+          <li><a href="{% url 'board' 'coding' %}">Coding</a></li>
+          <li><a href="{% url 'board' 'infomation' %}">Information</a></li>
         </ul>
       </li>
       <li class="dropdown">
         <a href class="dropdown-toggle" data-toggle="dropdown">Wargame <b class="caret"></b></a>
         <ul class="dropdown-menu">
-          <li><a href="/board/Rank">Rank</a></li>
-          <li><a href="/board/Game">Game</a></li>
+          <li><a href="{% url 'board' 'rank' %}">Rank</a></li>
+          <li><a href="{% url 'board' 'game' %}">Game</a></li>
         </ul>
       </li>
     </ul>
