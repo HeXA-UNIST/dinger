@@ -1,0 +1,43 @@
+<div class="article_wrapper">
+<div class="page-header">
+  <h1> {{ article.subject }} <span class="label label-default"> {{ article.author.get_profile.name }} </span></h1>
+</div>
+
+<div class="row">
+    <div class="col-md-offset-1">
+    {{ article.content }}
+    </div>
+    <small> {{ article.written }} </small>
+
+</div>
+<hr>
+<div class="comment_wrapper">
+  {% for comment in article.comment_set.all %}
+  <div class="comment">
+    <div class="comment_head">
+      <span class="lb_comment_name">
+          {{ comment.author.get_profile.name }} 
+      </span>
+      <span class="lb_comment_written">
+          <small>{{ comment.written }}</small>
+      </span>
+    </div>
+    <div class="comment_body">
+      <span class="lb_comment_content">
+        {{ comment.content }}
+      </span>
+    </div>
+  </div>
+  {% endfor %}
+  <div class="comment_write">
+    <form action="{% url 'comment' article.id %}" method="post">
+    {% csrf_token %}
+    <div class="row">
+      <div class="col-md-10"> {{ form.as_p }} </div>
+      <div class="col-md-2"> <button type="button" class="btn btn-primary btn-lg" onclick="submit()">코멘트</button> </div>
+    </div>
+    
+    </form>
+  </div>
+</div>
+</div>

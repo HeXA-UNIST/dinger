@@ -69,7 +69,7 @@ def write_article(request, board_name):
 			article = Article(subject=subject, content=content, private=private, 
 							board=board, author=request.user)
 			article.save()
-			return HttpResponseRedirect(reverse('view_article', 
+			return HttpResponseRedirect(reverse('article', 
 										args=[str(article.id)]))
 	return HttpResponseRedirect('/')
 
@@ -82,9 +82,6 @@ def write_comment(request, article_id):
 		Comment.objects.create(content=content, article=article, 
 							author=request.user)
 
-		return HttpResponseRedirect(reverse('view_article', 
+		return HttpResponseRedirect(reverse('article', 
 										args=[str(article.id)]))
 	return HttpResponseRedirect('/')
-
-def show_board(request, board_name):
-    return render(request, 'index.html', {'board_name': board_name})

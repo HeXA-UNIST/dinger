@@ -1,0 +1,70 @@
+.board_wrapper {
+
+}
+
+.board_wrapper ul {
+	list-style: none;
+	padding: 0;
+}
+
+
+.board_wrapper ul li{
+	list-style: none;
+
+
+}
+
+.article_wrapper {
+	margin-bottom: 30px;
+}
+
+.comment_wrapper {
+	border-style: solid;
+	border-width: 1px;
+	border-color: #dedede;
+
+}
+
+.comment_wrapper .comment {
+	background-color: #F0F6FA;
+	border-bottom-width: 1px;
+	border-bottom-color: #dedede;
+	border-bottom-style: solid;
+
+	padding: 5px 10px;
+}
+
+.last {
+	border-bottom-style: solid;
+
+}
+
+.comment_wrapper .comment_write {
+
+}
+
+.comment .comment_head {
+	padding: 10px 0 5px 0;
+
+}
+
+.comment .comment_body {
+	padding: 5px 0 10px 0;
+}
+
+.comment .lb_comment_name {
+	font-weight: bold;
+}
+
+.comment .lb_comment_written {
+	color: #aaaaaa;
+}
+
+.comment .lb_comment_content {
+	
+}
+
+.comment_write #id_content {
+
+}
+

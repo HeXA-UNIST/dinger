@@ -12,11 +12,8 @@ urlpatterns = patterns('',
     url(r'^member/', include('member.urls')),
     url(r'^admin/', include(admin.site.urls)),
 
-    url(r'^board/([\w]+)/', board_views.show_board),
-
-	url(r'^list/(?P<board_name>\w+)$', board_views.list_articles, name="list_articles"),
+	url(r'^list/(?P<board_name>\w+)$', board_views.list_articles, name="board"),
 	url(r'^write/(?P<board_name>\w+)$', board_views.write_article, name="write_article"),
-	url(r'^article/(?P<article_id>[0-9]+?)$', board_views.view_article, name="view_article"),
-	url(r'^comment/(?P<article_id>[0-9]+?)$', board_views.write_comment, name="write_comment"),
-
+	url(r'^article/(?P<article_id>[0-9]+?)$', board_views.view_article, name="article"),
+	url(r'^comment/(?P<article_id>[0-9]+?)$', board_views.write_comment, name="comment"),
 )

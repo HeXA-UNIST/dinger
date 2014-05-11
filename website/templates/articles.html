@@ -1,0 +1,30 @@
+
+<div class="board_wrapper">
+  <ul class="">
+    <li class="row">
+      <span class="col-md-1"> <center>번호</center> </span>
+      <span class="col-md-5"> 제목</center> </span>
+      <span class="col-md-2"> <center>작성자</center> </span>
+      <span class="col-md-2"> <center>작성일</center> </span>
+      <span class="col-md-2"> <center>조회수</center> </span>
+    </li>
+    {% for article in articles %}
+    <li class="row">
+    <span class="col-md-1"> <center>{{ article.id }}</center> </span>
+    <span class="col-md-5"> <a href="{% url 'article' article.id %}"> {{ article.subject }} </a> </span>
+    <span class="col-md-2"> <center>{{ article.author.get_profile.name }}</center> </span>
+    <span class="col-md-2"> <center>
+    {% if article.written_today %}
+    {{ article.written | date:"G:i:s" }}
+    {% else %}
+    {{ article.written | date:"Y-m-d" }}
+    {% endif %}
+    </center> </span>
+    <span class="col-md-2"> <center>{{ article.hit }} </center></span>
+    </li>
+    {% endfor %}
+  </ul>
+
+</div>
+
+<a href="{% url 'write_article' current_board %}" class="btn btn-primary btn-sm" onclick="submit()">글쓰기</a>
