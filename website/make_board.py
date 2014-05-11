@@ -9,7 +9,7 @@ board_list = [
     'notice','update','freeboard','gallery',
     'system','network','web','other',
     'dbsystem','dbnetwork','dbweb','coding','information',
-    'rank','game'
+    'rank','game' 
 ]
 
 for name in board_list:
