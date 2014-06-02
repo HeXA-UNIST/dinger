@@ -24,3 +24,8 @@ def intro(request):
 			'form': form,
 	})
 
+def login(request):
+	form = RegisterForm()
+	return render(request, 'login.html', {
+			'form': form,
+	})

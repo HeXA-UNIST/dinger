@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+{% load bootstrap3 %}
+{# Load CSS and JavaScript #}
+{# Display django.contrib.messages as Bootstrap alerts #}
+
+<head>
+  <link rel="stylesheet" type="text/css" href="/static/css/login.css"/>
+  <link rel="stylesheet" href="/static/css/bootstrap.css">
+  <link rel="stylesheet" href="/static/css/normalize.css">
+</head>
+<body>
+  <section class="main">
+    <!--form class="form-3">
+      <p class="clearfix">
+        <label for="login">Username</label>
+        <input type="text" name="login" id="login" placeholder="Username">
+      </p>
+      <p class="clearfix">
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" placeholder="Password"> 
+      </p>
+      <p class="clearfix">
+        <input type="checkbox" name="remember" id="remember">
+        <label for="remember">Remember me</label>
+      </p>
+      <p class="clearfix">
+        <input type="submit" name="submit" value="Sign in">
+      </p>       
+    </form-->
+    <form class="form-1">
+      <p class="field">
+        <input type="text" name="login" placeholder="Username or email">
+        <i class="icon-user icon-large"></i>
+      </p>
+        <p class="field">
+          <input type="password" name="password" placeholder="Password">
+          <i class="icon-lock icon-large"></i>
+      </p>
+      <p class="submit">
+        <button type="submit" name="submit"><i class="icon-arrow-right icon-large"></i></button>
+      </p>
+    </form>
+  </section>
+</body>
