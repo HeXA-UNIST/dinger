@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="/static/css/bootstrap.css">
   <link rel="stylesheet" href="/static/css/normalize.css">
   <link rel="stylesheet" href="/static/css/intro.css">
+  <link rel="stylesheet" type="text/css" href="/static/css/login.css"/>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
 	<style> 
 	#mask {  
@@ -73,12 +74,14 @@
 </head>
 <body>
 	<div id="mask"></div> 
+  {% if user.is_anonymous %}
 	<div class="window"> 
 		{% include 'login.html' %}
 	</div> 
   <div id="header">
     <a href="#" class="openMask" style="font-size:200%; position:absolute; right:0px;">LOGIN</a> 
   </div>
+  {% endif %}
   <section id="intro">
     <div class="container">
       <div class="row">

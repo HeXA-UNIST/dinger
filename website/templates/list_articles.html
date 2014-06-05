@@ -9,10 +9,10 @@
 
 	{% if article %}
 
-	{% include "article.html" with article=article %}
+	{% include "article.html" with article=article is_liked=is_liked %}
 
 	{% endif %}
 
 	{% include "articles.html" with articles=articles %}
-
+	
 {% endblock %}

@@ -55,6 +55,10 @@ def get_signin(request):
 def post_signup(request):
     form = RegisterForm(request.POST)
     if form.is_valid():
+        print 'valid'
+        if form.is_registered():
+            return HttpResponseRedirect('/')
+
         userdata = {
             'username': form.cleaned_data['username'],
             'password': form.cleaned_data['passwd'],
@@ -64,11 +68,10 @@ def post_signup(request):
             'intro': form.cleaned_data['intro'],
             'phone': form.cleaned_data['phone']
         }
-        if form.is_registered():
-            return HttpResponseRedirect('/')
 
         new_user(userdata)
         return HttpResponseRedirect('signin')
+    print 'invalid'
     
     return HttpResponseRedirect('/')
 
@@ -79,6 +82,7 @@ def post_signin(request):
         password = form.cleaned_data['passwd']
 
         redirect_url = 'http://google.com'
+        print username, password
 
         user = login_user(request, username, password)
         if user:
@@ -86,22 +90,52 @@ def post_signin(request):
             redirect_url = '/'
         else: # id not found
             pass
-        return HttpResponseRedirect('/')
     return HttpResponseRedirect('/')
 
-def sign_up(request):
+"""
+def sign_up(request):  
     if request.method == 'GET':
         return get_signup(request)
     elif request.method == 'POST':
         return post_signup(request)
+"""
+
+def sign_up(request):
+    if request.method == 'POST':
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            print 'valid'
+            if form.is_registered():
+                return HttpResponseRedirect('/')
+
+            userdata = {
+                'username': form.cleaned_data['username'],
+                'password': form.cleaned_data['passwd'],
+                'email': form.cleaned_data['email'],
+                'name': form.cleaned_data['name'],
+                'birthday': form.cleaned_data['birthday'],
+                'intro': form.cleaned_data['intro'],
+                'phone': form.cleaned_data['phone']
+            }
+
+            new_user(userdata)
+            return HttpResponseRedirect('/')
+
+    else:
+        form = RegisterForm()
+
+    return render(request, 'sign_up.html', {
+            'form': form,
+    })
 
 def sign_in(request):
     if request.user.is_authenticated():
         return HttpResponseRedirect('/')
-    elif request.method == 'GET':
-        return get_signin(request)
-    elif request.method == 'POST':
+    if request.method == 'GET':
+        return HttpResponseRedirect('/')
+    if request.user.is_anonymous() and request.method == 'POST':
         return post_signin(request)
+        
 
 def sign_out(request):
     logout(request)

@@ -16,4 +16,9 @@ urlpatterns = patterns('',
 	url(r'^write/(?P<board_name>\w+)$', board_views.write_article, name="write_article"),
 	url(r'^article/(?P<article_id>[0-9]+?)$', board_views.view_article, name="article"),
 	url(r'^comment/(?P<article_id>[0-9]+?)$', board_views.write_comment, name="comment"),
+
+	url(r'^likes/(?P<article_id>[0-9]+?)$', board_views.likes, name="likes"),
+	url(r'^dislikes/(?P<article_id>[0-9]+?)$', board_views.dislikes, name="dislikes"),
+
+	url(r'^download/(?P<key>\w+)$', board_views.download, name="download"),
 )
