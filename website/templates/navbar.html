@@ -1,12 +1,13 @@
 <nav class="navbar navbar-inverse navbar-fixed-top scoped-content">
+<div class="container">
   <style type="text/css" scoped>
   .navbar-inverse {
     background-color: #343434;
     border-color: #232323;
   }
-  .container { width: 100% }
   .pull-right { margin-right: 20px }
   </style>
+
   <div class="navbar-header">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
       <span class="icon-bar"></span>
@@ -14,6 +15,7 @@
       <span class="icon-bar"></span>
     </button>
   </div>
+  
   <a class="navbar-brand" href="{% url 'intro.views.main' %}"><img src="https://fbcdn-sphotos-g-a.akamaihd.net/hphotos-ak-prn1/t1.0-9/10262087_257735844432069_7674560844438266838_n.jpg" width="25px" height="25px"></img> HeXA</a>
   <div class="navbar-collapse collapse">
     <ul class="nav navbar-nav navbar-left">
@@ -33,7 +35,7 @@
           <li><a href="{% url 'board' 'notice' %}">Notice</a></li>
           <li><a href="{% url 'board' 'update' %}">Update</a></li>
           <li><a href="{% url 'board' 'freeboard' %}">FreeBoard</a></li>
-          <li><a href="/{% url 'board' 'gallery' %}">Gallery</a></li>
+          <li><a href="{% url 'board' 'gallery' %}">Gallery</a></li>
         </ul>
       </li>
       <li class="dropdown">
@@ -73,5 +75,6 @@
       </li>
       {% endif %}
     </ul>
+  </div>
   </div>
 </nav>

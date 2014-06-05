@@ -12,27 +12,33 @@
 </head>
 
 <body>
-  <div id="container">
+  <div>
     <div id="header">
       {% block navbar %}
         {% include "navbar.html" %}
       {% endblock %}
     </div>
-    <div id="content">
-      {% block content %}
-        <h1>content</h1>
-      {% endblock %}
+
+    <div class="container">
+      <div id="content">
+        {% block content %}
+          <h1>content</h1>
+        {% endblock %}
+      </div>
+      <!--
+      <div id="sideinfo">
+        {% block sideinfo %}
+          <h1>sideinfo</h1>
+        {% endblock %}
+      </div>
+      -->
     </div>
-    <div id="sideinfo">
-      {% block sideinfo %}
-        <h1>sideinfo</h1>
-      {% endblock %}
-    </div>
-    <div id="footer-fixed">
-      {% block footer %}
-        <center>Terms Privacy Developers © 2014 HeXA </center>
-      {% endblock %}
+    <div class="container">
+      <div id="footer">
+          <center>Terms Privacy Developers © 2014 HeXA </center>
+      </div>
     </div>
   </div>
 </body>
+
 </html>

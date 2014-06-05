@@ -6,7 +6,7 @@
 
 {% block content %}
 
-<form action="{% url 'write_article' current_board %}" method="post">
+<form action="{% url 'write_article' current_board %}" method="post" enctype="multipart/form-data">
 {% csrf_token %}
 {{ form.as_p }}
 <button type="button" class="btn btn-primary btn-lg" onclick="submit()">작성하기</button>

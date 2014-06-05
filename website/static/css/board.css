@@ -15,7 +15,31 @@
 }
 
 .article_wrapper {
-	margin-bottom: 30px;
+	margin-bottom: 50px;
+
+}
+
+.article_info {
+
+}
+
+#article_title {
+	padding: 0 10px;
+}
+
+#article_attachment {
+	border: 1px solid;
+	padding: 10px 20px;
+}
+
+#article_content {
+	padding: 20px;
+	margin-top: 50px;
+	min-height: 200px;
+}
+
+#article_likes {
+	padding: 0 30px ;
 }
 
 .comment_wrapper {

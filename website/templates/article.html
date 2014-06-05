@@ -1,14 +1,35 @@
 <div class="article_wrapper">
-<div class="page-header">
+<div id="article_title" class="page-header">
   <h1> {{ article.subject }} <span class="label label-default"> {{ article.author.get_profile.name }} </span></h1>
+  <span> <small> {{ article.written }} </small> </span>
 </div>
+<div class="article_info">
+  <div id="article_attachment">
 
-<div class="row">
-    <div class="col-md-offset-1">
+    첨부파일 : 
+    {% with attachment=article.attachment %}
+    {% if attachment %}
+    
+      <a href='{% url 'download' attachment.uuid %}'> {{ attachment.name }} </a>
+    {% else %}
+      없음
+    {% endif %}
+    {% endwith %}
+  </div>
+  <div id="article_content">
     {{ article.content }}
-    </div>
-    <small> {{ article.written }} </small>
+  </div>
 
+  <div id="article_likes">
+    {% if is_liked %}
+        <a href="{% url 'dislikes' article.id %}">좋아요 취소</a>
+      {% else %}
+        <a href="{% url 'likes' article.id %}">좋아요</a>
+      {% endif %}
+      {% if article.liked_by.count >= 1 %} 
+      <span> {{ article.liked_by.count }}명이 좋아합니다. </span>
+      {% endif %}
+  </div>
 </div>
 <hr>
 <div class="comment_wrapper">

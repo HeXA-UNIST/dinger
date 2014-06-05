@@ -51,31 +51,30 @@ textarea {
 	height: 100px;
 }*/
 
-html,body{height:100%;}
-body {
-  margin:0;
-}
+
 #body {
   min-height: 100%;
 }
 
 #container {
   background-color:#F0F0F0;
-  width: 100%;
+ 	
   height: auto;
   margin: 0 auto;
 }
 
 #header {
-  height: 80px;
+
 }
 
 #content {
   background-color:#F5F5F5;
   float: left;
-  width: 80%;
+  width: 100%;
   height: auto;
-  padding-bottom:50px;
+  padding: 20px;
+  padding-top: 100px;
+
 }
 
 #sideinfo {
@@ -92,10 +91,7 @@ body {
   height: 50px;
 }
 
-#footer-fixed {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
+#footer {
   height: 50px;
   background-color: silver;
   vertical-align: middle;
