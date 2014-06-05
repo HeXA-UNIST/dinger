@@ -111,17 +111,15 @@ def write_comment(request, article_id):
 def likes(request, article_id):
     article = get_object_or_404(Article, pk=article_id)
     article.liked_by.add(request.user)
-    return view_article(request, article_id)
-
+    return HttpResponseRedirect(reverse('article', 
+                                    args=[str(article.id)]))
 @login_required
 def dislikes(request, article_id):
     article = get_object_or_404(Article, pk=article_id)
     article.liked_by.remove(request.user)
-    return view_article(request, article_id)
+    return HttpResponseRedirect(reverse('article', 
+                                    args=[str(article.id)]))
 
-@login_required
-def file_download(request, article_id):
-    pass
 
 @login_required
 def download(request, key):
