@@ -10,6 +10,7 @@ urlpatterns = patterns('',
     url(r'^$', main, name="index"),
     url(r'^intro/', include('intro.urls')),
     url(r'^member/', include('member.urls')),
+    url(r'^album/', include('album.urls')),
     url(r'^admin/', include(admin.site.urls)),
 
 	url(r'^list/(?P<board_name>\w+)$', board_views.list_articles, name="board"),

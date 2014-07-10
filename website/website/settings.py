@@ -45,6 +45,7 @@ INSTALLED_APPS = (
     'intro',
     'member',
     'board',
+    'album',
 )
 
 MIDDLEWARE_CLASSES = (
