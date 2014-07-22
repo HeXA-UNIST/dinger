@@ -1,14 +1,25 @@
 {% extends "base.html" %}
 
 {% block head %}
-
+<script src="/static/js/album_list.js"></script>
+<script src="/static/js/new_photo.js"></script>
 {% endblock %}
 
 {% block content %}
 
 <form action="{% url 'newphoto' %}" method="post" enctype="multipart/form-data">
 {% csrf_token %}
+<div id="album_list" class="dropdown">
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+    Albums
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+  </ul>
+</div>
 {{ form.as_p }}
+
+
 <button type="button" class="btn btn-primary btn-lg" onclick="submit()">작성하기</button>
 </form>
 {% endblock %}
