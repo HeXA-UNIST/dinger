@@ -14,7 +14,5 @@ urlpatterns = patterns('',
     url(r'^(?P<photo_id>[0-9]+?)$', views.photo, name="photo"),
     url(r'^t/(?P<photo_id>[0-9]+?)$', views.thumbnail, name="thumbnail"),
     url(r'^$', views.album_main, name="album"),
-    
-   
-    
+
 )
