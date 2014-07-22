@@ -43,10 +43,6 @@ class Comment(models.Model):
     author = models.ForeignKey(User)
     
 
-class CommentInComment(models.Model):
-    pass
-
-
 class Attachment(models.Model):
     name = models.CharField(max_length=255)
     uuid = models.CharField(max_length=255)
