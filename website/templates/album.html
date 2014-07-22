@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="/static/css/album.css">
+<script src="/static/js/album_list.js"></script>
+<script src="/static/js/album.js"></script>
+{% endblock %}
+
+{% block content %}
+<div id="album_wrapper">
+ <div id="album_panel">
+ <a href="{% url 'newphoto' %}" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-plus"></span> 사진</a>
+
+<div id="album_list" class="dropdown">
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+    Albums
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+  </ul>
+</div>
+</div>
+ <div id="album_page">
+ <!--
+ {% for chunk in photos %}
+  <div class="row">
+  {% for photo in chunk %}
+     {% if photo %}
+  	 <div class="col-md-3">
+ 	   <a class="thumbnail">
+  	    
+  	    <img src="{% url 'thumbnail' photo.uuid %}" alt="...">
+ 	   </a>
+ 	 </div>
+ 	 {% endif %}
+  {% endfor %}
+  </div>
+  <div id="detail" style="height:300px; background:#ccc; ">
+  
+  </div>
+  
+ {% endfor %}
+ -->
+ </div>
+ 
+ <div>
+ 
+ </div>
+</div>
+<script>
+
+
+
+</script>
+{% endblock %}
