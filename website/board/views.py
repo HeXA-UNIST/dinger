@@ -13,6 +13,7 @@ from django.shortcuts import get_object_or_404
 
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
+from django.http import Http404 
 from django.views.decorators.http import require_POST
 
 from .forms import ArticleForm
@@ -120,11 +121,10 @@ def dislikes(request, article_id):
     return HttpResponseRedirect(reverse('article', 
                                     args=[str(article.id)]))
 
-
-@login_required
 def download(request, key):
+    if request.user.is_anonymous():
+        raise Http404
     attach = get_object_or_404(Attachment, uuid=key)
-
     path = attach.file.path
     filename = unicode(attach.name)
     wrapper = FileWrapper(file(path))
