@@ -1,0 +1,38 @@
+#album_list {
+    width: 200px;
+    float: right;
+}
+
+.thumbnail {
+    cursor: pointer;
+    width: 250px;
+    height: 200px;
+}
+
+.thumbnail img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.photo_details {
+    background: #444;
+    height: 670px;
+    display: none;
+    text-align: center;
+    
+    padding: 10px;
+}
+
+.photo_details img {
+    margin: auto;
+    max-width: 100%;
+    max-height: 100%;
+    box-shadow:5px 5px 5px #222;
+    /* Firefox */
+    -moz-box-shadow:5px 5px 5px #222;
+    /* Safiri, Chrome */
+    -webkit-box-shadow:5px 5px 5px #222;
+
+    /* IE */
+    filter:progid:DXImageTransform.Microsoft.Shadow(color=silver,direction=135, strength=20);
+}
