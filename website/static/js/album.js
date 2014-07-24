@@ -128,6 +128,8 @@ $(function() {
             request_photos(this.album,
                 this.currentPhoto,
                 function(data) {
+                    if (that.currentPhoto != 0 && that.currentPhoto <= data.next)
+                     return;
                     var length = data.size;
                     for (var i=0; i<length; i++) {
                         that.add(data.photos[i])
@@ -247,7 +249,7 @@ $(function() {
                 if (this.currentPhoto != null)
                     this.currentPhoto.row.details.slideUp("fast");
                 photo.row.details.slideDown(function() {
-                    $('html,body').animate({scrollTop: photo.row.details.position().top-200 }, "fast");
+                    $('html,body').animate({scrollTop: photo.row.details.position().top-140 }, "fast");
                 });
             }
             this.currentPhoto = photo;   

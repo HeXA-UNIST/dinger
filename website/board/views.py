@@ -34,6 +34,14 @@ def get_board_from_name(name):
     return board
 
 @login_required
+def list_all(request):
+    
+    return render(request, 'list_articles.html', {
+            'current_board': 'all',
+            'articles': reversed(Article.objects.all()),
+    })
+
+@login_required
 def list_articles(request, board_name):
     
     board = get_object_or_404(Board, name=board_name)

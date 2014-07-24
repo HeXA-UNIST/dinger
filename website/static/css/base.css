@@ -74,12 +74,12 @@ textarea {
 }
 
 #content {
-  background-color:#F5F5F5;
+//  background-color:#F5F5F5;
   float: left;
   width: 100%;
   height: auto;
-  padding: 20px;
-  padding-top: 100px;
+//  padding: 20px;
+  padding-top: 70px;
 
 }
 
@@ -92,13 +92,13 @@ textarea {
 }
 
 #footer {
-  background-color:#555555;
+//  background-color:#555555;
   clear: both;
   height: 50px;
 }
 
 #footer {
   height: 50px;
-  background-color: silver;
+//  background-color: silver;
   vertical-align: middle;
 }
