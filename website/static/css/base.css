@@ -7,9 +7,10 @@ textarea {
 	resize: none;
 }
 
+
+
 .header {
 	height: 80px;
-
 }
 
 .middle {
@@ -51,6 +52,11 @@ textarea {
 	height: 100px;
 }*/
 
+.box {
+    background-color: #fff;
+    border:1px solid #ccc;
+    padding: 16px 20px;
+}
 
 #body {
   min-height: 100%;
