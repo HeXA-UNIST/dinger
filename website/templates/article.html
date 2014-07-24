@@ -1,7 +1,9 @@
-<div class="article_wrapper">
-<div id="article_title" class="page-header">
-  <h1> {{ article.subject }} <span class="label label-default"> {{ article.author.get_profile.name }} </span></h1>
-  <span> <small> {{ article.written }} </small> </span>
+<div class="article_wrapper box">
+<div class="article_header">
+      <h3 class="article_title"> {{ article.subject }} <span class="label label-default"> {{ article.author.get_profile.name }} </span>
+      <span> <small> {{ article.written }} </small> </span>
+      </h3>
+    
 </div>
 <div class="article_info">
   <div id="article_attachment">

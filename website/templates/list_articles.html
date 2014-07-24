@@ -6,16 +6,34 @@
 
 
 {% block content %}
-
-    <div class="box">
-        <a href="{% url 'write_article' current_board %}" class="btn btn-primary btn-sm" onclick="submit()">글쓰기</a>
-
-    </div>
-	{% if article %}
-
-	{% include "article.html" with article=article is_liked=is_liked %}
-
+    {% if article %}
+	    {% include "article.html" with article=article is_liked=is_liked %}
 	{% endif %}
+    <div class="box" id="board_tools">
+    <div class="row">
+        <div class="col-md-1">
+            <a href="{% url 'write_article' current_board %}" class="btn btn-primary btn-lg" onclick="submit()"> New </a>
+        </div>
+        <div class="col-md-1">
+            <a href="{% url 'write_article' current_board %}" class="btn btn-warning btn-lg" onclick="submit()"> Modify </a>
+        </div>
+        <div class="col-md-1">
+            <a href="{% url 'write_article' current_board %}" class="btn btn-danger btn-lg" onclick="submit()"> Delete </a>
+        </div>
+        
+        <div class="col-md-offset-5 col-md-4">
+            <form class="row" role="search">
+              <div class="col-md-8">
+                <input type="text" class="form-control" placeholder="Search">
+              </div>
+              <div class="col-md-4">
+                  <button type="submit" class="btn btn-default">Submit</button>
+              </div>
+            </form>
+        </div>
+    </div>
+    </div>
+	
 
 	{% include "articles.html" with articles=articles %}
 	
