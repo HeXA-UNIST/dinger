@@ -15,9 +15,16 @@ li {
     width: 970px;
     margin: 0 auto;
 }
-#header {
-  
+
+#header {  
     background-color: #216BB5; //rgb(33, 38, 33);
+}
+
+#links {
+    background-color: #eee; //rgb(33, 38, 33);
+    color: #333;
+    padding: 60px 0;
+    text-align: center;
 }
 
 #intro {
@@ -36,8 +43,8 @@ li {
 }
 
 #whoami {
-    background-color: rgb(186, 63, 63);
-    color: #fff;
+    background-color: rgb(233, 241, 250);
+    color: #111;
     padding: 35px 0;
     
 }
@@ -47,15 +54,18 @@ li {
 }
 
 #whoami .intro_details {
-    color: #eee;
+    color: #555;
     font-size: 15px;
 }
 
 #whoami .contact {
+    color: #555;
     font-size: 20px;
+
 }
 
 #whoami .label {
+    color: #555;
     font-size: 30px;
 }
 

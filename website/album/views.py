@@ -154,7 +154,7 @@ def ajax_request_photos(request):
     result_dict = {}
     photo_data = []
 
-    NUM_PHOTO = 12
+    NUM_PHOTO = 20
     num_left = len(query)
     next_uuid = 0
     for photo in query.order_by('-uuid')[:NUM_PHOTO]:
