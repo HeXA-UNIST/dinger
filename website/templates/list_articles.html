@@ -6,13 +6,33 @@
 
 
 {% block content %}
-
-	{% if article %}
-
-	{% include "article.html" with article=article is_liked=is_liked %}
-
+  <div class="board_content">
+    {% if article %}
+	    {% include "article.html" with article=article is_liked=is_liked %}
 	{% endif %}
 
+    <div class="box" id="board_tools">
+        <div class="btn_ctrls">
+            <span>
+                <a href="{% url 'write_article' current_board %}" class="btn btn-primary" onclick="submit()"> New </a>
+            </span>
+            <span>
+                <a href="{% url 'write_article' current_board %}" class="btn btn-warning" onclick="submit()"> Modify </a>
+            </span>
+            <span>
+                <a href="{% url 'write_article' current_board %}" class="btn btn-danger" onclick="submit()"> Delete </a>
+            </span>
+        </div>
+        
+        <div class="search_box">
+            <form class="form-wrapper cf"  role="search">
+                <input type="text" class="form-control" placeholder="Search">
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+        </div>
+
+    </div>
+
 	{% include "articles.html" with articles=articles %}
-	
+  </div>	
 {% endblock %}

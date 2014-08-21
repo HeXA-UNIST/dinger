@@ -1,5 +1,44 @@
+.box {
+    background-color: #fff;
+    border:1px solid #ccc;
+    padding: 12px 16px;
+}
+
+.box:before,
+.box:after {
+  content:"";
+  display:table;
+}
+.box:after {
+  clear:both;
+}
+.box {
+  zoom:1; /* For IE 6/7 (trigger hasLayout) */
+}
+
+#board_tools {
+    margin-top: 20px;
+}
+
+.btn_ctrls {
+    width: 320px;
+    float: left;
+}
+
+.search_box {
+    width: 320px; 
+    float: right;
+}
+
+.board_content {
+    width: 760px;
+    margin: auto;
+}
+
 .board_wrapper {
- border: 1px solid;
+    padding-top: 1px;
+    padding-bottom: 0px;
+    margin-top: 5px;
 }
 
 .board_wrapper ul {
@@ -10,32 +49,66 @@
 
 .board_wrapper ul li{
 	list-style: none;
-
-
 }
 
 .article_wrapper {
-	margin-bottom: 50px;
-
+    margin-top: 10px;
+	margin-bottom: 0px;
+	padding: 0;
 }
 
 .article_info {
+    padding: 12px 16px;
+}
+
+.article_header {
+
+    border-bottom: 1px solid #ccc;
+}
+
+.article_title {
+    margin-left: 12px;
+    font-size: 33px;
 
 }
 
-#article_title {
-	padding: 0 10px;
+.article_title h3 {
+    
+}
+
+.info_label {
+    background-color: #cccccc;
+}
+
+.info_label2 {
+
+}
+
+.info_label2:hover {
+    background-color: #dddddd;
+}
+
+
+#article_info_add {
+
+}
+#article_author {
+    float: left;
+    border: 1px dotted #b2b2b2;
+	padding: 5px 10px;
 }
 
 #article_attachment {
-	border: 1px solid;
-	padding: 10px 20px;
+    float: right;
+	border: 1px dotted #b2b2b2;
+	padding: 5px 10px;
+
 }
 
 #article_content {
-	padding: 20px;
-	margin-top: 50px;
-	min-height: 200px;
+	padding: 20px 12px;
+	margin-top: 20px;
+	min-height: 150px;
 }
 
 #article_likes {
@@ -43,10 +116,10 @@
 }
 
 .comment_wrapper {
-	border-style: solid;
-	border-width: 1px;
-	border-color: #dedede;
-
+//	border-style: solid;
+//	border-width: 1px;
+//	border-color: #dedede;
+	border-top: 1px solid #dedede;
 }
 
 .comment_wrapper .comment {
@@ -54,8 +127,7 @@
 	border-bottom-width: 1px;
 	border-bottom-color: #dedede;
 	border-bottom-style: solid;
-
-	padding: 5px 10px;
+	padding: 5px 12px;
 }
 
 .last {
@@ -64,16 +136,18 @@
 }
 
 .comment_wrapper .comment_write {
-
+    padding: 12px 12px;
 }
 
 .comment .comment_head {
-	padding: 10px 0 5px 0;
-
+	//padding: 10px 0 5px 0;
+    
 }
 
 .comment .comment_body {
-	padding: 5px 0 10px 0;
+//	padding: 5px 0 10px 0;
+    margin-top: 3px;
+    margin-left: 12px;
 }
 
 .comment .lb_comment_name {
@@ -92,3 +166,111 @@
 
 }
 
+.cf:before, .cf:after{
+    content:"";
+    display:table;
+}
+ 
+.cf:after{
+    clear:both;
+}
+ 
+.cf{
+    zoom:1;
+}    
+
+
+/* Form wrapper styling */
+.form-wrapper {
+    width: 300px;
+    padding: 5px;
+    border:1px solid #ccc;
+}
+ 
+/* Form text input */
+ 
+.form-wrapper input {
+    width: 218px;
+    height: 30px;
+    padding: 10px 5px;
+    float: left;    
+    border: 0;
+    background: #eee;
+    border-radius: 3px 0 0 3px;      
+}
+ 
+.form-wrapper input:focus {
+    outline: 0;
+    background: #fff;
+    box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
+}
+ 
+.form-wrapper input::-webkit-input-placeholder {
+   color: #999;
+   font-weight: normal;
+   font-style: italic;
+}
+ 
+.form-wrapper input:-moz-placeholder {
+    color: #999;
+    font-weight: normal;
+    font-style: italic;
+}
+ 
+.form-wrapper input:-ms-input-placeholder {
+    color: #999;
+    font-weight: normal;
+    font-style: italic;
+}    
+ 
+/* Form submit button */
+.form-wrapper button {
+    overflow: visible;
+    position: relative;
+    float: right;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    height: 30px;
+    width: 70px;
+    font: bold 15px/30px 'lucida sans', 'trebuchet MS', 'Tahoma';
+    color: #fff;
+    text-transform: uppercase;
+    background: #d83c3c;
+    border-radius: 0 3px 3px 0;      
+    text-shadow: 0 -1px 0 rgba(0, 0 ,0, .3);
+}   
+   
+.form-wrapper button:hover{     
+    background: #e54040;
+}   
+   
+.form-wrapper button:active,
+.form-wrapper button:focus{   
+    background: #c42f2f;
+    outline: 0;   
+}
+ 
+.form-wrapper button:before { /* left arrow */
+    content: '';
+    position: absolute;
+    border-width: 8px 8px 8px 0;
+    border-style: solid solid solid none;
+    border-color: transparent #d83c3c transparent;
+    top: 8px;
+    left: -6px;
+}
+ 
+.form-wrapper button:hover:before{
+    border-right-color: #e54040;
+}
+ 
+.form-wrapper button:focus:before,
+.form-wrapper button:active:before{
+        border-right-color: #c42f2f;
+}      
+ 
+.form-wrapper button::-moz-focus-inner { /* remove extra button spacing for Mozilla Firefox */
+    border: 0;
+    padding: 0;
+}    

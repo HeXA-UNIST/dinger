@@ -46,6 +46,6 @@ class Comment(models.Model):
 class Attachment(models.Model):
     name = models.CharField(max_length=255)
     uuid = models.CharField(max_length=255)
-    file = models.FileField(upload_to='attachement/')
+    file = models.FileField(upload_to='attachment/')
     article = models.OneToOneField(Article)
     uploaded = models.DateTimeField(auto_now_add=True)

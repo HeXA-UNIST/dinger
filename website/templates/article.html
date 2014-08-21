@@ -1,20 +1,25 @@
-<div class="article_wrapper">
-<div id="article_title" class="page-header">
-  <h1> {{ article.subject }} <span class="label label-default"> {{ article.author.get_profile.name }} </span></h1>
-  <span> <small> {{ article.written }} </small> </span>
+<div class="article_wrapper box">
+<div class="article_header">
+      <span class="article_title"> {{ article.subject }}
+      </span>
 </div>
 <div class="article_info">
-  <div id="article_attachment">
-
-    첨부파일 : 
-    {% with attachment=article.attachment %}
-    {% if attachment %}
+  <div class="article_info_add clearfix">
+      <div id="article_author">
+       <span> {{ article.author.get_profile.name }} </span>
+      <span> <small> {{ article.written }} </small> </span>
+      </div>
+      <div id="article_attachment">
+        첨부파일 : 
+        {% with attachment=article.attachment %}
+        {% if attachment %}
     
-      <a href='{% url 'download' attachment.uuid %}'> {{ attachment.name }} </a>
-    {% else %}
-      없음
-    {% endif %}
-    {% endwith %}
+          <a href='{% url 'download' attachment.uuid %}'> {{ attachment.name }} </a>
+        {% else %}
+          없음
+        {% endif %}
+        {% endwith %}
+      </div>
   </div>
   <div id="article_content">
     {{ article.content }}
@@ -31,7 +36,7 @@
       {% endif %}
   </div>
 </div>
-<hr>
+
 <div class="comment_wrapper">
   {% for comment in article.comment_set.all %}
   <div class="comment">
