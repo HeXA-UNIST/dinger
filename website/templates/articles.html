@@ -11,7 +11,7 @@
     {% for article in articles %}
     <li class="row info_label2">
     <span class="col-md-1"> <center>{{ article.id }}</center> </span>
-    <span class="col-md-5"> <a href="{% url 'article' article.id %}"> {{ article.subject }} </a> </span>
+    <a href="{% url 'article' article.id %}"><span class="col-md-5">  {{ article.subject }} </span></a>
     <span class="col-md-2"> <center>{{ article.author.get_profile.name }}</center> </span>
     <span class="col-md-2"> <center>
     {% if article.written_today %}
@@ -24,5 +24,6 @@
     </li>
     {% endfor %}
   </ul>
+  Pagination
 
 </div>
