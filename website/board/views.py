@@ -15,6 +15,8 @@ from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.http import Http404 
 from django.views.decorators.http import require_POST
+from django.utils import html
+from django.utils.safestring import mark_safe
 
 from .forms import ArticleForm
 from .forms import CommentForm
@@ -41,6 +43,15 @@ def list_all(request):
             'articles': reversed(Article.objects.all()),
     })
 
+def esc(art):
+    art.content_lines = art.content.split('\n')
+    return art
+    art.content = ''.join(map(lambda p: p.join(['<p>']*2), art.content.split('\n')))
+    # print art.content
+    art.content = mark_safe(art.content)
+    
+    return art
+        
 @login_required
 def list_articles(request, board_name):
     
@@ -66,7 +77,7 @@ def view_article(request, article_id):
     return render(request, 'list_articles.html', {
             'current_board': board.name,
             'articles': reversed(board.article_set.all()),
-            'article': article,
+            'article': esc(article),
             'is_liked': article.is_liked_by(request.user),
             'comments': article.comment_set.all(),
             'form': CommentForm(),
@@ -86,12 +97,11 @@ def write_article(request, board_name):
             article = Article(subject=subject, content=content, private=private, 
                             board=board, author=request.user)
             article.save()
-            
+
             if file:
                 filename = str(file['file'])
                 attach = Attachment(name=filename, uuid=uuid.uuid1().hex, file=file['file'], article=article)
                 attach.save()
-
             return HttpResponseRedirect(reverse('article', 
                                         args=[str(article.id)]))
     else:

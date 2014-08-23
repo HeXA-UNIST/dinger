@@ -21,9 +21,11 @@
 <div class="article_info clearfix">
    
   <div id="article_content">
-    {{ article.content }}
-  </div>
+    {% for line in article.content_lines %}
+    <p> {{ line }} </p>
+    {% endfor %}
 
+  </div>
   <div id="article_likes">
     {% if is_liked %}
         <a href="{% url 'dislikes' article.id %}">좋아요 취소</a>
