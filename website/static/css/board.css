@@ -44,31 +44,40 @@
 .board_wrapper ul {
 	list-style: none;
 	padding: 0;
+	
 }
 
 
 .board_wrapper ul li{
+    padding: 5px 0px;
 	list-style: none;
+	border-bottom: 1px solid #aaa;
+	
 }
 
 .article_wrapper {
     margin-top: 10px;
 	margin-bottom: 0px;
 	padding: 0;
+	box-shadow: 5px 5px 0px #efefef;
 }
 
 .article_info {
-    padding: 12px 16px;
+    padding: 0px 16px;
+   padding-bottom: 12px;
 }
 
 .article_header {
-
-    border-bottom: 1px solid #ccc;
+    //padding: 12px 20px;
 }
 
+
 .article_title {
-    margin-left: 12px;
-    font-size: 33px;
+    padding: 0px 2px;
+    margin-left: 23px;
+    margin-top: 16px;
+    font-size: 37px;
+    float: left;
 
 }
 
@@ -89,30 +98,36 @@
 }
 
 
-#article_info_add {
-
+.article_info_add {
+    margin-top: 5px;
+    float: right;
 }
+
 #article_author {
-    float: left;
-    border: 1px dotted #b2b2b2;
+    border: 0px dotted #b2b2b2;
+    border-bottom: 1px solid #b2b2b2;
 	padding: 5px 10px;
 }
 
 #article_attachment {
-    float: right;
 	border: 1px dotted #b2b2b2;
 	padding: 5px 10px;
+	margin-top: 27px;
+	margin-right: 23px;
+	float: right;
 
 }
 
 #article_content {
-	padding: 20px 12px;
-	margin-top: 20px;
+	padding: 0px 12px;
+	margin-top: 32px;
 	min-height: 150px;
+	display: inline-block;
 }
 
 #article_likes {
-	padding: 0 30px ;
+    margin-top: 30px;
+	padding: 5px 30px ;
 }
 
 .comment_wrapper {
