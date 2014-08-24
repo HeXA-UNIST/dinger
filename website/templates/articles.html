@@ -26,8 +26,8 @@
     </li>
     {% endfor %}
   </ul>
-  
-  <ul class="pagination">
+  <div class="text-center" id="board_paginator">
+  <ul class="pagination" >
   {% if articles.has_previous %}
     <li><a href="?page={{ articles.previous_page_number }}">&laquo;</a></li>
   {% else %}
@@ -46,5 +46,6 @@
   {% endif %}  
     
   </ul>
+  </div>
   {% endwith %}
 </div>

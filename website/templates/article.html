@@ -58,6 +58,10 @@
   <div class="comment_write">
     <form action="{% url 'comment' article.id %}" method="post">
     {% csrf_token %}
+    <input type="hidden" name="page" value="{{ current_page }}" />
+    {% if current_board %}
+    <input type="hidden" name="board" value="{{ current_board }}" />
+    {% endif %}
     <div class="row">
       <div class="col-md-10"> {{ form.as_p }} </div>
       <div class="col-md-2"> <button type="button" class="btn btn-primary btn-lg" onclick="submit()">코멘트</button> </div>

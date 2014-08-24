@@ -114,8 +114,10 @@ def write_article(request, board_name):
                 filename = str(file['file'])
                 attach = Attachment(name=filename, uuid=uuid.uuid1().hex, file=file['file'], article=article)
                 attach.save()
-            return HttpResponseRedirect(reverse('article', 
-                                        args=[str(article.id)]))
+            
+            redirect_url = reverse('board', args=[str(article.board.name)])    
+            qs = urllib.urlencode({'article': article.id})
+            return HttpResponseRedirect('{}?{}'.format(redirect_url, qs))
     else:
         form = ArticleForm()
 
@@ -128,15 +130,28 @@ def write_article(request, board_name):
 @require_POST
 def write_comment(request, article_id):
     article = get_object_or_404(Article, pk=article_id)
+    board_name = request.POST.get('board', None)
+    if board_name:
+        board = get_object_or_404(Board, name=board_name)
+        if board != article.board:
+            raise Http404("Article Not Found")
+            
+    page = request.POST.get('page')
+        
     form = CommentForm(request.POST)
     if form.is_valid():
         content = form.cleaned_data['content']
         Comment.objects.create(content=content, article=article, 
                             author=request.user)
 
-        return HttpResponseRedirect(reverse('article', 
-                                        args=[str(article.id)]))
-    return HttpResponseRedirect('/')
+    if board:
+        redirect_url = reverse('board', args=[str(board_name)])
+    else:
+        redirect_url = reverse('listall')
+    
+    qs = urllib.urlencode({'article': article_id, 'page': page})
+    return HttpResponseRedirect('{}?{}'.format(redirect_url, qs))
+    
 
 @login_required
 def likes(request, article_id):
