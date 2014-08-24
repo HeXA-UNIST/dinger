@@ -7,6 +7,10 @@ import urllib
 from django import template
 from django.core.servers.basehttp import FileWrapper
 from django.core.urlresolvers import reverse
+from django.core.paginator import Paginator
+from django.core.paginator import PageNotAnInteger
+from django.core.paginator import EmptyPage
+
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
@@ -35,13 +39,6 @@ def get_board_from_name(name):
         return None
     return board
 
-@login_required
-def list_all(request):
-    
-    return render(request, 'list_articles.html', {
-            'current_board': 'all',
-            'articles': reversed(Article.objects.all()),
-    })
 
 def esc(art):
     art.content_lines = art.content.split('\n')
@@ -51,38 +48,53 @@ def esc(art):
     art.content = mark_safe(art.content)
     
     return art
+
+def render_board(request, board, articles):
+    pager = Paginator(list(reversed(articles)), 15)
+    page = request.GET.get('page')
+    try:
+        articles = pager.page(page)
+    except PageNotAnInteger:
+        articles = pager.page(1)
+    except EmptyPage:
+        articles = pager.page(pager.num_pages)
+
+    article_id = request.GET.get('article', 0)
+    try:
+        article_id = int(article_id)
+    except ValueError:
+        article_id = 0
         
-@login_required
-def list_articles(request, board_name):
-    
-    board = get_object_or_404(Board, name=board_name)
-    return render(request, 'list_articles.html', {
-            'current_board': board_name,
-            'articles': reversed(board.article_set.all()),
+    vars = {}
+    if board:
+        vars.update({'current_board': board.name})
+    vars.update({
+            'articles': articles,
     })
-
-@login_required
-def view_article(request, article_id):
-    article = get_object_or_404(Article, pk=article_id)
-    article.hit += 1
-    article.save()
-    
-    board = article.board;
-
-    #if article.read > request.user.authorization:
-    # Authorization need
-    #   pass
-
-
-    return render(request, 'list_articles.html', {
-            'current_board': board.name,
-            'articles': reversed(board.article_set.all()),
+    if article_id > 0:
+        article = get_object_or_404(Article, pk=article_id)
+        if board and board != article.board:
+            raise Http404("Article Not Found")
+            
+        vars.update({
             'article': esc(article),
             'is_liked': article.is_liked_by(request.user),
             'comments': article.comment_set.all(),
             'form': CommentForm(),
-    })
+        })
+        
+    return render(request, 'list_articles.html', vars)
+    
+@login_required
+def list_all_articles(request):
+    return render_board(request, None, Article.objects.all())
+    
+@login_required
+def list_board_articles(request, board_name):    
+    board = get_object_or_404(Board, name=board_name)
+    return render_board(request, board, board.article_set.all())
 
+    
 @login_required
 def write_article(request, board_name):
     board = get_object_or_404(Board, name=board_name)

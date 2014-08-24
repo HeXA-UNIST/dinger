@@ -1,5 +1,6 @@
 
 <div class="board_wrapper box">
+  
   <ul class="">
     <li class="row info_label">
       <span class="col-md-1"> <center>번호</center> </span>
@@ -8,10 +9,11 @@
       <span class="col-md-2"> <center>작성일</center> </span>
       <span class="col-md-2"> <center>조회수</center> </span>
     </li>
+    {% with paginator=articles.paginator %}
     {% for article in articles %}
     <li class="row info_label2">
     <span class="col-md-1"> <center>{{ article.id }}</center> </span>
-    <a href="{% url 'article' article.id %}"><span class="col-md-5">  {{ article.subject }} </span></a>
+    <a href="?article={{ article.id }}&page={{ articles.number }}"><span class="col-md-5">  {{ article.subject }} </span></a>
     <span class="col-md-2"> <center>{{ article.author.get_profile.name }}</center> </span>
     <span class="col-md-2"> <center>
     {% if article.written_today %}
@@ -24,6 +26,25 @@
     </li>
     {% endfor %}
   </ul>
-  Pagination
-
+  
+  <ul class="pagination">
+  {% if articles.has_previous %}
+    <li><a href="?page={{ articles.previous_page_number }}">&laquo;</a></li>
+  {% else %}
+    <li class="disabled"><a href="#">&laquo;</a></li>
+  {% endif %}  
+    
+  </li>
+  {% for page in paginator.page_range %}
+     <li {% if page == articles.number %} class="active" {% endif %}><a href="?page={{ page }}"> {{ page }} <span class="sr-only">(current)</span></a></li>
+  {% endfor %}
+  
+  {% if articles.has_next %}
+    <li><a href="?page={{ articles.next_page_number }}">&laquo;</a></li>
+  {% else %}
+    <li class="disabled"><a href="#">&raquo;</a></li>
+  {% endif %}  
+    
+  </ul>
+  {% endwith %}
 </div>

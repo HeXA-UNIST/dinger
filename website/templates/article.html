@@ -19,7 +19,6 @@
      </div>
 </div>
 <div class="article_info clearfix">
-   
   <div id="article_content">
     {% for line in article.content_lines %}
     <p> {{ line }} </p>
@@ -27,7 +26,7 @@
 
   </div>
   <div id="article_likes">
-    {% if is_liked %}
+      {% if is_liked %}
         <a href="{% url 'dislikes' article.id %}">좋아요 취소</a>
       {% else %}
         <a href="{% url 'likes' article.id %}">좋아요</a>
