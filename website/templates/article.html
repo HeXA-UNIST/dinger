@@ -19,7 +19,6 @@
      </div>
 </div>
 <div class="article_info clearfix">
-   
   <div id="article_content">
     {% for line in article.content_lines %}
     <p> {{ line }} </p>
@@ -27,7 +26,7 @@
 
   </div>
   <div id="article_likes">
-    {% if is_liked %}
+      {% if is_liked %}
         <a href="{% url 'dislikes' article.id %}">좋아요 취소</a>
       {% else %}
         <a href="{% url 'likes' article.id %}">좋아요</a>
@@ -59,6 +58,10 @@
   <div class="comment_write">
     <form action="{% url 'comment' article.id %}" method="post">
     {% csrf_token %}
+    <input type="hidden" name="page" value="{{ current_page }}" />
+    {% if current_board %}
+    <input type="hidden" name="board" value="{{ current_board }}" />
+    {% endif %}
     <div class="row">
       <div class="col-md-10"> {{ form.as_p }} </div>
       <div class="col-md-2"> <button type="button" class="btn btn-primary btn-lg" onclick="submit()">코멘트</button> </div>

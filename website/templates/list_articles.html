@@ -8,20 +8,26 @@
 {% block content %}
   <div class="board_content">
     {% if article %}
+        {% with current_page=articles.number %}
 	    {% include "article.html" with article=article is_liked=is_liked %}
+	    {% endwith %}
 	{% endif %}
 
     <div class="box" id="board_tools">
         <div class="btn_ctrls">
+            {% if current_board %}
             <span>
                 <a href="{% url 'write_article' current_board %}" class="btn btn-primary" onclick="submit()"> New </a>
             </span>
-            <span>
-                <a href="{% url 'write_article' current_board %}" class="btn btn-warning" onclick="submit()"> Modify </a>
-            </span>
-            <span>
-                <a href="{% url 'write_article' current_board %}" class="btn btn-danger" onclick="submit()"> Delete </a>
-            </span>
+                {% if article and article.author == user %}
+                <span>
+                    <a href="{% url 'write_article' current_board %}" class="btn btn-warning" onclick="submit()"> Modify </a>
+                </span>
+                <span>
+                    <a href="{% url 'write_article' current_board %}" class="btn btn-danger" onclick="submit()"> Delete </a>
+                </span>
+                {% endif %}
+            {% endif %}
         </div>
         
         <div class="search_box">

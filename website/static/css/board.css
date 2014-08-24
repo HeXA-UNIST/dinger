@@ -44,7 +44,6 @@
 .board_wrapper ul {
 	list-style: none;
 	padding: 0;
-	
 }
 
 
@@ -101,6 +100,10 @@
 .article_info_add {
     margin-top: 5px;
     float: right;
+}
+
+#board_paginator {
+
 }
 
 #article_author {
