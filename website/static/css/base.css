@@ -59,7 +59,6 @@ textarea {
 
 #container {
   background-color:#F0F0F0;
- 	
   height: auto;
   margin: 0 auto;
 }
@@ -69,10 +68,8 @@ textarea {
 }
 
 #content {
-
   height: auto;
   margin: auto;
-//  padding: 20px;
   padding-top: 70px;
 }
 
@@ -85,13 +82,7 @@ textarea {
 }
 
 #footer {
-//  background-color:#555555;
-  clear: both;
   height: 50px;
+  margin-top: 30px;
 }
 
-#footer {
-  height: 50px;
-//  background-color: silver;
-  vertical-align: middle;
-}
