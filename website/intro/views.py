@@ -1,4 +1,5 @@
 #-*- coding: utf-8 -*-
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect
@@ -8,10 +9,8 @@ from member.forms import RegisterForm
 
 from board.models import Board
 
+@login_required
 def main(request):
-	if request.user.is_anonymous():
-		return HttpResponseRedirect('/intro')
-
 	# render hexa hompage main here.
 
 	return render(request, 'index.html', {

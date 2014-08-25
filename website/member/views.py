@@ -79,7 +79,7 @@ def post_signin(request):
     form = LoginForm(request.POST)
     if form.is_valid():
         username = form.cleaned_data['user']
-        password = form.cleaned_data['passwd']
+        password = form.cleaned_data['password']
 
         redirect_url = 'http://google.com'
         print username, password
@@ -127,16 +127,39 @@ def sign_up(request):
     return render(request, 'sign_up.html', {
             'form': form,
     })
+    
 
 def sign_in(request):
     if request.user.is_authenticated():
         return HttpResponseRedirect('/')
-    if request.method == 'GET':
-        return HttpResponseRedirect('/')
-    if request.user.is_anonymous() and request.method == 'POST':
-        return post_signin(request)
+    
+    if request.method == "POST":
+        username = request.POST.get('user', None)
+        password = request.POST.get('password', None)
+        next = request.POST.get('next', '/')
         
-
+        if username and password: # valid
+            user = login_user(request, username, password)
+            if user:
+                profiles = request.user.get_profile()
+                return HttpResponseRedirect(next)
+                
+            else: # id not found or password wrong
+                message = 'Account not found'
+        else:
+            message = 'Please fill in the blanks'
+    else:
+        next = request.GET.get('next')
+        username = ''
+        message = ''
+    print locals()
+    return render(request, 'signin.html', {
+        'username': username,
+        'message': message,
+        'next': next,
+    })
+        
+        
 def sign_out(request):
     logout(request)
     return HttpResponseRedirect('/')
