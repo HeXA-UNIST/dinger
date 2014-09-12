@@ -42,7 +42,7 @@ class UserProfile(models.Model):
     intro = models.TextField()
     phone = models.CharField(max_length=12)
 
-    user = models.ForeignKey(User, unique=True)
+    user = models.OneToOneField(User, related_name="profile")
     # photo = models.ForeignKey(Photo, db_column='photo_id')
     
 

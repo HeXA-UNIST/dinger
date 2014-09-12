@@ -12,20 +12,46 @@ body {
 	-webkit-font-smoothing: antialiased;
 	background-color: #111;    
 }
-.content-wrapper {
-	margin-top: 0;
-}
 
 .content {
    /* padding-bottom: 50px;
    // margin-top: 50px;*/
+   
+   margin: 0 auto;
+   margin-top: 180px;
+   width: 610px;
+}
+
+#title {
+	float: right;
+	color: #222;
+	font-size: 90px;
+	
+	font-family: "Helvetica"
+}
+
+
+.logobox {
+	width: 360px;
+	margin: 0 auto;
+	border: 0px;
+	color: #fff;
+	margin-bottom: 5px;
+
+}
+
+
+.logobox img {
+	width: 105px;
+	height: 105px;
 }
 
 .signin {
-    padding: 25px;
+    padding: 0px;
     width: 360px;
     margin: 0 auto;
-    margin-top: 180px;
+    padding: 25px 1px;
+
 }
 
 .message-box {

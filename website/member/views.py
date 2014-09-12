@@ -86,7 +86,7 @@ def post_signin(request):
 
         user = login_user(request, username, password)
         if user:
-            profiles = request.user.get_profile()
+            profiles = request.user.profile
             redirect_url = '/'
         else: # id not found
             pass
@@ -141,7 +141,7 @@ def sign_in(request):
         if username and password: # valid
             user = login_user(request, username, password)
             if user:
-                profiles = request.user.get_profile()
+                profiles = request.user.profile
                 return HttpResponseRedirect(next)
                 
             else: # id not found or password wrong
