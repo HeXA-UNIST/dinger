@@ -1,2 +1,0 @@
-django-bootstrap3 - https://github.com/dyve/django-bootstrap3
-dh5bp - http://www.mattsnider.com/django-html5-boilerplate
