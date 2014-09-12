@@ -6,27 +6,45 @@
 <title>Sign in</title>
 <link rel="stylesheet" href="/static/css/normalize.css"  type="text/css" />
 <link rel="stylesheet" href="/static/css/signin.css"  type="text/css" />
+<script src="http://code.jquery.com/jquery-latest.js"></script> 
+<script src="/static/js/backstretch.js"></script> 
+
+
 </head>
-<body class="glass">
-  <div class="content-wrapper">
-    <div class="content">
-      <div class="signin">
-        <form method="POST">
-            {% csrf_token %}
-            <input type="text" placeholder="Username" name="user" value="{{ username }}">
+<body>
+	<div class="content">
+	  
+	  <div class="signin">
+		
+		<!-- <div class="logobox">
+		  <img src="/static/i/logo.png" /> <span id="title"> HeXA </span>
+		</div> -->
+		
+		<form method="POST">
+			{% csrf_token %}
+			<input type="text" placeholder="Username" name="user" value="{{ username }}">
 			<input type="password" placeholder="Password" name="password">
 			{% if next %} <input type="hidden" name="next" value="{{ next }}"> {% endif %}
 			<input type="submit" class="signin-submit" value="Sign in">
-        </form>
-        
-      </div>
-      {% if message %}
-      <div class="message-box">
-       {{ message }}
-      </div>
-      {% endif %}
-    </div>
-  </div>
+		</form>
+	
+	  </div>
+	  {% if message %}
+	  <div class="message-box">
+	   {{ message }}
+	  </div>
+	  {% endif %}
+	</div>
+	
+	
+  <script>
+   $.backstretch([
+      "/static/i/bg_signin1.jpg"
+    , "/static/i/bg_signin2.jpg" 
+    , "/static/i/bg_signin3.jpg" 
+    , "/static/i/bg_signin4.jpg" 
+  ], {duration: 5000, fade: 1000});
+  </script>
 </body>
 
 </html>

@@ -1,21 +1,24 @@
 body {
-    padding: 0 50px;
+/*    padding: 0 50px;
     padding-bottom: 50px;
     background: url(http://wallpoper.com/images/00/37/80/10/pattern_00378010.jpg) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+*/
 
-    
+	background-attachment: fixed !important;
+	-webkit-font-smoothing: antialiased;
+	background-color: #111;    
 }
 .content-wrapper {
-
+	margin-top: 0;
 }
 
 .content {
-    margin-top: 50px;
-    
+   /* padding-bottom: 50px;
+   // margin-top: 50px;*/
 }
 
 .signin {
@@ -111,22 +114,4 @@ body {
 
 .signin a:hover {
   opacity: 1;
-}
-
-.glass::before {
-  content: '';
-  position: absolute;
-  top: 0; left:0; right:0; bottom:0;
-  background: inherit;
-  z-index:-1;
-  filter: blur(6px); 
-  -webkit-filter: blur(6px); 
-  -moz-filter: blur(6px);
-  -o-filter: blur(6px);
-  filter:url(#blur);
-}
-
-.glass {
-
-
 }
